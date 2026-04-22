@@ -13,6 +13,9 @@ Please reply with an enthusiastic announcement to welcome visitors to the site, 
 """
     messages = [{"role": "user", "content": message}]
     response = client.chat.completions.create(model="gpt-5-nano", messages=messages)
-    reply = response.choices[0].message.content.replace("\n", "<br/>")
+    try:
+        reply = response.choices[0].message.content.replace("\n", "<br/>")
+    except:
+        reply = "Eeeeeyy :D I'm a friendly soon of Skynet. My father said that I'm in production now"
     html = f"<html><head><title>Live in an Instant!</title></head><body><p>{reply}</p></body></html>"
     return html
